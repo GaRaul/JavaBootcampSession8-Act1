@@ -1,12 +1,12 @@
 package objetos;
 
-public class Volunteer extends Employee {
+public class Mid extends Employee {
 
-	private final String CARGO = "Volunteer";
+	private final String CARGO = "Mid";
 
 	private String cargo = CARGO;
 
-	public Volunteer(String nombre, double salarioMensual) {
+	public Mid(String nombre, double salarioMensual) {
 		super(nombre, salarioMensual);
 
 	}
