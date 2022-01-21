@@ -1,16 +1,22 @@
 package objetos;
 
-public class Volunteer extends Empleado {
-
-	//DECLARAR CONSTANTE
-	final String CATEGORIAPROF = "Volunteer";
+public abstract class Volunteer {
 	
-	//DEFINIR ATRIBUTO
-	String categoriaProf = CATEGORIAPROF;
+	private String nombre = "";
 
-	//CREAR CONSTRUCTOR
-	public Volunteer(String nombreEmpleado) {
-		super(nombreEmpleado);
+	public Volunteer() {
 	}
-	
+
+	public Volunteer(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }
