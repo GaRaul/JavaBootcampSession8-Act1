@@ -1,25 +1,25 @@
 package objetos;
 
-public class Volunteer extends Employee {
+public class Junior extends Employee {
 
-	private final String CARGO = "Volunteer";
-
+	private final String CARGO = "Junior";
+	
 	private String cargo = CARGO;
-
-	public Volunteer(String nombre, double salarioMensual) {
+	
+	public Junior(String nombre, double salarioMensual) {
 		super(nombre, salarioMensual);
 
 	}
 
 //	public boolean sueldoValido() {
 //		boolean esValido;
-//
+//		
 //		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
-//
+//		
 //		return esValido;
-//
+//		
 //	}
-
+	
 	public void salarioFinal() {
 		double salarioFinal;
 		
@@ -30,3 +30,4 @@ public class Volunteer extends Employee {
 	}
 
 }
+	

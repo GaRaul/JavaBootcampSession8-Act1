@@ -1,46 +1,32 @@
 package objetos;
 
-public abstract class Boss {
+public class Boss extends Employee {
 
-	private final double SALARIOBASE = 8001;
-	
-	private String nombre = "";
-	private double salarioMensual = SALARIOBASE;
+	private final String CARGO = "Boss";
 
-	public Boss() {
-	}
-
-	public Boss(String nombre) {
-		this.nombre = nombre;
-	}
+	private String cargo = CARGO;
 
 	public Boss(String nombre, double salarioMensual) {
+		super(nombre, salarioMensual);
 
-		this.nombre = nombre;
-		this.salarioMensual = salarioFinal(salarioMensual);
 	}
 
-	public String getNombre() {
-		return nombre;
-	}
+//	public boolean sueldoValido() {
+//		boolean esValido;
+//
+//		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
+//
+//		return esValido;
+//
+//	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public double getSalarioMensual() {
-		return salarioMensual;
-	}
-
-	public void setSalarioMensual(double salarioMensual) {
-		this.salarioMensual = salarioMensual;
-	}
-	
-	private double salarioFinal(double salarioMensual) {
+	public void salarioFinal() {
+		double salarioFinal;
 		
-		salarioMensual *= 1.5;
+		salarioFinal = super.salarioFinal(this.salarioMensual, this.cargo);
 		
-		return salarioMensual;
+		this.salarioMensual = salarioFinal;
+		
 	}
 
 }
