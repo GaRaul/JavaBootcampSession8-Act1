@@ -1,21 +1,46 @@
 package objetos;
 
-public class Boss extends Empleado {
+public abstract class Boss {
 
-	//DECLARAR CONSTANTE
-	final String CATEGORIAPROF = "Boss";
+	private final double SALARIOBASE = 8001;
 	
-	//DEFINIR ATRIBUTO
-	String categoriaProf = CATEGORIAPROF;
+	private String nombre = "";
+	private double salarioMensual = SALARIOBASE;
 
-	//CREAR CONSTRUCTOR
-	public Boss(String nombreEmpleado, double salarioMensual) {
-		super(nombreEmpleado, salarioMensual * 1.5);
+	public Boss() {
+	}
+
+	public Boss(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public Boss(String nombre, double salarioMensual) {
+
+		this.nombre = nombre;
+		this.salarioMensual = salarioFinal(salarioMensual);
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getSalarioMensual() {
+		return salarioMensual;
+	}
+
+	public void setSalarioMensual(double salarioMensual) {
+		this.salarioMensual = salarioMensual;
 	}
 	
-//	private void salarioFinal() {
-//		
-//		this.salarioMensual = this.salarioMensual * 1.10;
-//		
-//	}
+	private double salarioFinal(double salarioMensual) {
+		
+		salarioMensual *= 1.5;
+		
+		return salarioMensual;
+	}
+
 }
