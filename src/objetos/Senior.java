@@ -6,27 +6,49 @@ public class Senior extends Employee {
 	
 	private String cargo = CARGO;
 	
-	public Senior(String nombre, double salarioMensual) {
-		super(nombre, salarioMensual);
+	public Senior(String nombre, double salarioMensualBruto) {
+		super(nombre, salarioMensualBruto);
 
 	}
 
-//	public boolean sueldoValido() {
-//		boolean esValido;
-//		
-//		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
-//		
-//		return esValido;
-//		
-//	}
 	
-	public void salarioFinal() {
-		double salarioFinal;
+	public void salarioMensualBruto() {
+		double salarioMensualBruto;
 		
-		salarioFinal = super.salarioFinal(this.salarioMensual, this.cargo);
+		salarioMensualBruto = super.salarioMensualBruto(this.cargo);
 		
-		this.salarioMensual = salarioFinal;
+		this.salarioMensualBruto = salarioMensualBruto;
 		
 	}
+	
+	public void salarioMensualNeto() {
+		double salarioMensualNeto;
+		
+		salarioMensualNeto = super.salarioMensualNeto(this.cargo);
+		
+		this.salarioMensualNeto = salarioMensualNeto;
+	}
 
+	public void calcularSueldoAnualBruto() {
+		double salarioAnualBruto;
+		
+		salarioAnualBruto = super.calcularSueldoAnualBruto(this.salarioMensualBruto);
+		
+		this.salarioAnualBruto = salarioAnualBruto;
+	}
+
+	public void calcularSueldoAnualNeto() {
+		double salarioAnualNeto;
+		
+		salarioAnualNeto = super.calcularSueldoAnualNeto(this.cargo);
+		
+		this.salarioAnualNeto = salarioAnualNeto;
+	}
+
+	public void bonus() {
+		this.salarioAnualBruto = super.bonus(this.salarioAnualBruto);
+		this.salarioAnualNeto = calcularSueldoAnualNeto(this.cargo);
+
+	}
+	
 }

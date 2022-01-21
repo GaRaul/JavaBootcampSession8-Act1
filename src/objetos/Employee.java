@@ -2,16 +2,22 @@ package objetos;
 
 public abstract class Employee {
 
+	// ATRIBUTAS
 	protected String nombre = "";
-	protected double salarioMensual;
+	protected double salarioMensualBruto;
+	protected double salarioMensualNeto;
+	protected double salarioAnualBruto;
+	protected double salarioAnualNeto;
 
-	protected Employee(String nombre, double salarioMensual) {
+	// CONSTRUCTOR
+	protected Employee(String nombre, double salarioMensualBruto) {
 
 		this.nombre = nombre;
-		this.salarioMensual = salarioMensual;
+		this.salarioMensualBruto = salarioMensualBruto;
 
 	}
 
+	// GETTERS Y SETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -20,100 +26,193 @@ public abstract class Employee {
 		this.nombre = nombre;
 	}
 
-	public double getSalarioMensual() {
-		return salarioMensual;
+	public double getSalarioMensualBruto() {
+		return salarioMensualBruto;
 	}
 
-	public void setSalarioMensual(double salarioMensual) {
-		this.salarioMensual = salarioMensual;
+	public void setSalarioMensualBruto(double salarioMensualBruto) {
+		this.salarioMensualBruto = salarioMensualBruto;
 	}
 
-	protected double salarioFinal(double salarioMensual, String cargo) {
-		double salarioFinal;
+	public double getSalarioMensualNeto() {
+		return salarioMensualNeto;
+	}
+
+	public void setSalarioMensualNeto(double salarioMensualNeto) {
+		this.salarioMensualNeto = salarioMensualNeto;
+	}
+
+	public double getSalarioAnualBruto() {
+		return salarioAnualBruto;
+	}
+
+	public void setSalarioAnualBruto(double salarioAnualBruto) {
+		this.salarioAnualBruto = salarioAnualBruto;
+	}
+
+	public double getSalarioAnualNeto() {
+		return salarioAnualNeto;
+	}
+
+	public void setSalarioAnualNeto(double salarioAnualNeto) {
+		this.salarioAnualNeto = salarioAnualNeto;
+	}
+
+	// METODO PARA CALCULAR EL SALARIO MENSUAL BRUTO CON LAS REDUCCIONES DE SUELDO
+	protected double salarioMensualBruto(String cargo) {
+		double salarioMensualBrutoFinal;
 
 		if (cargo.equals("Boss")) {
-			salarioFinal = this.salarioMensual;
+			salarioMensualBrutoFinal = this.salarioMensualBruto;
 
-			if (!sueldoValido(cargo, salarioFinal)) {
-				salarioFinal = 8001;
+			if (!sueldoValido(cargo, salarioMensualBrutoFinal)) {
+				salarioMensualBrutoFinal = 8001;
 			}
 
 		} else if (cargo.equals("Manager")) {
-			salarioFinal = this.salarioMensual;
+			salarioMensualBrutoFinal = this.salarioMensualBruto;
 
-			if (!sueldoValido(cargo, salarioFinal)) {
-				if (salarioFinal < 3000) {
-					salarioFinal = 3001;
+			if (!sueldoValido(cargo, salarioMensualBrutoFinal)) {
+				if (salarioMensualBrutoFinal < 3000) {
+					salarioMensualBrutoFinal = 3001;
 				} else {
-					salarioFinal = 4999;
+					salarioMensualBrutoFinal = 4999;
 				}
 			}
 
 		} else if (cargo.equals("Senior")) {
-			salarioFinal = this.salarioMensual - (this.salarioMensual * 0.05);
+			salarioMensualBrutoFinal = this.salarioMensualBruto - (this.salarioMensualBruto * 0.05);
 
-			if (!sueldoValido(cargo, salarioFinal)) {
-				salarioFinal = 2700;
+			if (!sueldoValido(cargo, salarioMensualBrutoFinal)) {
+				salarioMensualBrutoFinal = 2700;
 			}
 
 		} else if (cargo.equals("Mid")) {
-			salarioFinal = this.salarioMensual - (this.salarioMensual * 0.10);
+			salarioMensualBrutoFinal = this.salarioMensualBruto - (this.salarioMensualBruto * 0.10);
 
-			if (!sueldoValido(cargo, salarioFinal)) {
-				salarioFinal = 1800;
+			if (!sueldoValido(cargo, salarioMensualBrutoFinal)) {
+				salarioMensualBrutoFinal = 1800;
 			}
 
 		} else {
-			salarioFinal = this.salarioMensual - (this.salarioMensual * 0.15);
+			salarioMensualBrutoFinal = this.salarioMensualBruto - (this.salarioMensualBruto * 0.15);
 
-			if (!sueldoValido(cargo, salarioFinal)) {
-				salarioFinal = 0;
+			if (!sueldoValido(cargo, salarioMensualBrutoFinal)) {
+				salarioMensualBrutoFinal = 900;
 			}
 		}
 
-		return salarioFinal;
+		return salarioMensualBrutoFinal;
 
 	}
 
-	protected boolean sueldoValido(String cargo, double salarioFinal) {
+	// METODO QUE APLICA EL IRPF AL SUELDO BRUTO Y LO GUARDA EN EL SALARIO NETO
+	protected double salarioMensualNeto(String cargo) {
+		double salarioMensualNeto;
+		
+		if (cargo.equals("Boss")) {
+			salarioMensualNeto = this.salarioMensualBruto - (this.salarioMensualBruto * 0.32);
+
+		} else if (cargo.equals("Manager")) {
+			salarioMensualNeto =this.salarioMensualBruto - (this.salarioMensualBruto * 0.26);
+
+		} else if (cargo.equals("Senior")) {
+			salarioMensualNeto =this.salarioMensualBruto - (this.salarioMensualBruto * 0.24);
+			
+		} else if (cargo.equals("Mid")) {
+			salarioMensualNeto =this.salarioMensualBruto - (this.salarioMensualBruto * 0.15);
+
+		} else {
+			salarioMensualNeto =this.salarioMensualBruto - (this.salarioMensualBruto * 0.02);
+
+		}
+		
+		return salarioMensualNeto;
+
+	}
+	
+	// METODO QUE CALCULA EL SUELDO ANUAL BRUTO
+	protected double calcularSueldoAnualBruto(double salarioMensualBruto) {
+		double salarioAnualBruto;
+		
+		salarioAnualBruto = salarioMensualBruto * 12;
+		
+		return salarioAnualBruto;
+	}
+	
+	// METODO QUE CALCULA EL SUELDO ANUAL NETO
+	protected double calcularSueldoAnualNeto(String cargo) {
+		double salarioAnualNeto;
+		
+		if (cargo.equals("Boss")) {
+			salarioAnualNeto = this.salarioAnualBruto - (this.salarioAnualBruto * 0.32);
+
+		} else if (cargo.equals("Manager")) {
+			salarioAnualNeto = this.salarioAnualBruto - (this.salarioAnualBruto * 0.26);
+
+		} else if (cargo.equals("Senior")) {
+			salarioAnualNeto = this.salarioAnualBruto - (this.salarioAnualBruto * 0.24);
+			
+		} else if (cargo.equals("Mid")) {
+			salarioAnualNeto = this.salarioAnualBruto - (this.salarioAnualBruto * 0.15);
+
+		} else {
+			salarioAnualNeto = this.salarioAnualBruto - (this.salarioAnualBruto * 0.02);
+
+		}
+		
+		return salarioAnualNeto;
+
+	}
+	
+	// METODO QUE EMITE UN BONUS DEL 10% AL SUELDO ANUAL BRUTO
+	protected double bonus(double salarioAnualBruto) {
+		double salarioAnualBrutoMasBonus;
+		
+		salarioAnualBrutoMasBonus = salarioAnualBruto * 1.10;
+		
+		return salarioAnualBrutoMasBonus;
+	}
+	
+	protected boolean sueldoValido(String cargo, double salarioMensualBruto) {
 
 		if (cargo.equals("Boss")) {
-			if (salarioFinal > 8000) {
+			if (salarioMensualBruto > 8000) {
 				return true;
 			} else {
 				return false;
 			}
 
 		} else if (cargo.equals("Manager")) {
-			if (salarioFinal > 3000 && salarioFinal < 5000) {
+			if (salarioMensualBruto > 3000 && salarioMensualBruto < 5000) {
 				return true;
 			} else {
 				return false;
 			}
 
 		} else if (cargo.equals("Senior")) {
-			if (salarioFinal > 2700 && salarioFinal < 4000) {
+			if (salarioMensualBruto > 2700 && salarioMensualBruto < 4000) {
 				return true;
 			} else {
 				return false;
 			}
 
 		} else if (cargo.equals("Mid")) {
-			if (salarioFinal > 1800 && salarioFinal < 2500) {
+			if (salarioMensualBruto > 1800 && salarioMensualBruto < 2500) {
 				return true;
 			} else {
 				return false;
 			}
 
 		} else if (cargo.equals("Junior")) {
-			if (salarioFinal > 900 && salarioFinal < 1600) {
+			if (salarioMensualBruto > 900 && salarioMensualBruto < 1600) {
 				return true;
 			} else {
 				return false;
 			}
 
 		} else {
-			if (salarioFinal == 0) {
+			if (salarioMensualBruto == 0) {
 				return true;
 			} else {
 				return false;
