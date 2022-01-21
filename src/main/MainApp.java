@@ -1,3 +1,8 @@
+/* 
+* Autores: Abel, Fernando, Raul
+* Ultima modificacion: 21/01/2022
+*/
+
 package main;
 
 import objetos.*;
