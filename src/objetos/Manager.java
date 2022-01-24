@@ -11,15 +11,6 @@ public class Manager extends Employee {
 
 	}
 
-//	public boolean sueldoValido() {
-//		boolean esValido;
-//
-//		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
-//
-//		return esValido;
-//
-//	}
-
 	public void salarioFinal() {
 		double salarioFinal;
 		
@@ -28,5 +19,12 @@ public class Manager extends Employee {
 		this.salarioMensual = salarioFinal;
 		
 	}
+
+	@Override
+	public String toString() {
+		return "Manager [CARGO=" + CARGO + ", cargo=" + cargo + ", nombre=" + nombre + ", salarioMensual="
+				+ salarioMensual + "]";
+	}
+	
 
 }

@@ -62,9 +62,16 @@ public abstract class Employee {
 			if (!sueldoValido(cargo, salarioFinal)) {
 				salarioFinal = 1800;
 			}
+			
+		} else if (cargo.equals("Junior")) {
+			salarioFinal = this.salarioMensual - (this.salarioMensual * 0.15);
+
+			if (!sueldoValido(cargo, salarioFinal)) {
+				salarioFinal = 900;
+			}
 
 		} else {
-			salarioFinal = this.salarioMensual - (this.salarioMensual * 0.15);
+			salarioFinal = this.salarioMensual;
 
 			if (!sueldoValido(cargo, salarioFinal)) {
 				salarioFinal = 0;
@@ -122,4 +129,9 @@ public abstract class Employee {
 
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [nombre=" + nombre + ", salarioMensual=" + salarioMensual + "]";
+	}
+	
 }

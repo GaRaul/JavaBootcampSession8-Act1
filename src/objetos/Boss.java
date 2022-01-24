@@ -11,15 +11,6 @@ public class Boss extends Employee {
 
 	}
 
-//	public boolean sueldoValido() {
-//		boolean esValido;
-//
-//		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
-//
-//		return esValido;
-//
-//	}
-
 	public void salarioFinal() {
 		double salarioFinal;
 		

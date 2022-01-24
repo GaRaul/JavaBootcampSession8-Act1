@@ -10,15 +10,6 @@ public class Junior extends Employee {
 		super(nombre, salarioMensual);
 
 	}
-
-//	public boolean sueldoValido() {
-//		boolean esValido;
-//		
-//		esValido = super.sueldoValido(this.cargo, this.salarioMensual);
-//		
-//		return esValido;
-//		
-//	}
 	
 	public void salarioFinal() {
 		double salarioFinal;
